@@ -1,41 +1,22 @@
 
 // Puede ser 1 sola funcion con parametro (ataque, player, contrincante)
 
-function jugador1Ataca (ataque) {
+function jugadorAtaca (player, ataque, contrincante) {
+
+    let valorAtaque = 0
 
     if (ataque === 1) {
-        let valorAtaque = player1.ataque1.usar(player1.poder)
-        player2.vida -= valorAtaque
-        actualizarVista(valorAtaque, player1, player2)
-    } else if (ataque === 2) {
-        let valorAtaque = player1.ataque2.usar(player1.poder)
-        player2.vida -= valorAtaque
-        actualizarVista(valorAtaque, player1, player2)
-        
-    }
-    
-
-    
-}
-
-
-function jugador2Ataca (ataque) {
-
-    if (ataque === 1) {
-        let valorAtaque = player2.ataque1.usar(player2.poder)
-        player1.vida -= valorAtaque
-        actualizarVista(valorAtaque, player2, player1)
-        
+        valorAtaque = player.ataque1.usar(player.poder)
         
     } else if (ataque === 2) {
-        let valorAtaque = player2.ataque2.usar(player2.poder)
-        player1.vida -= valorAtaque
-        actualizarVista(valorAtaque, player2, player1)
+        valorAtaque = player.ataque2.usar(player.poder)
     }
-    
 
-    
+    contrincante.vida -= valorAtaque
+    actualizarVista(valorAtaque, player, contrincante)
+
 }
+
 
 /*
 function comprobarGanador (player1, player2) {
@@ -56,10 +37,10 @@ function comprobarGanador (player1, player2) {
 
 
 
-botonAtaque1Player1.addEventListener("click", function(){jugador1Ataca(1)})
-botonAtaque2Player1.addEventListener("click", function(){jugador1Ataca(2)})
-botonAtaque1Player2.addEventListener("click", function(){jugador2Ataca(1)})
-botonAtaque2Player2.addEventListener("click", function(){jugador2Ataca(2)})
+botonAtaque1Player1.addEventListener("click", function(){jugadorAtaca(player1,1,player2)})
+botonAtaque2Player1.addEventListener("click", function(){jugadorAtaca(player1,2,player2)})
+botonAtaque1Player2.addEventListener("click", function(){jugadorAtaca(player2,1,player1)})
+botonAtaque2Player2.addEventListener("click", function(){jugadorAtaca(player2,2,player1)})
 
 // Desactiva Botones
 // BotonesPlayer1.forEach(function(element){element.classList.toggle("desactivado")})
