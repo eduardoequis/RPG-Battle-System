@@ -59,7 +59,7 @@ function actualizarVista (valorAtaque, atacante, atacado) {
         if (atacado.vida > 0 && atacante.vida > 0 ) { // Ambos siguen con vida.
        
             setTimeout(function(){
-                // Se activan botones.
+                // Se activan botones del otro jugador:
                 desactivarBotones(atacado)
                 actualizarIndicador(`¡Es el turno de ${atacado.nombre}!`)
                 turnos += 1
@@ -68,15 +68,15 @@ function actualizarVista (valorAtaque, atacante, atacado) {
 
         } else { // Alguien pierde.
 
-            if (atacado.vida <=0) {
+            if (atacado.vida <=0 && atacante.vida <=0) {
+                setTimeout(function(){empate(player1, player2, personajeAtacanteDOM,personajeAtacadoDOM)}, 2000)
+            } else  if (atacado.vida <=0) {
                 setTimeout(function(){mostrarGanador(atacante, personajeAtacadoDOM)}, 2000)
-            }
-
-            if (atacante.vida <=0) {
+            } else  if (atacante.vida <=0) {
                 setTimeout(function(){mostrarGanador(atacado, personajeAtacanteDOM)}, 2000)
             }
 
-            // Definir EMPATE
+
             
            
         }
@@ -94,6 +94,19 @@ function mostrarGanador(ganador, perdedor) {
     actualizarIndicador(`¡${ganador.nombre} GANA!`)
     document.getElementById("ventanaFinal").classList.toggle("visible")
     
+}
+
+// En caso de empate:
+
+function empate (player1, player2, DOM1, DOM2) {
+    DOM1.classList.toggle("derrotado")
+    DOM2.classList.toggle("derrotado")
+    document.getElementsByClassName("fondo")[0].classList.toggle("victoria")
+    BotonesPlayer1.forEach(function(element){element.style.visibility = "hidden"});
+    BotonesPlayer2.forEach(function(element){element.style.visibility = "hidden"});
+    actualizarIndicador(`¡${player1.nombre} y ${player2.nombre} han caído! Ambos pierden.`)
+    document.getElementById("ventanaFinal").classList.toggle("visible")
+
 }
 
 
