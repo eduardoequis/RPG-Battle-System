@@ -1,6 +1,6 @@
 let player1 = personajeReptiliano;
 let player2 = personajeHechicera;
-let turno = 1;
+let turnos = 0
 
 // Carga de botones
 let botonAtaque1Player1 = document.querySelectorAll('#player1 .button')[0];

@@ -1,6 +1,4 @@
 
-// Puede ser 1 sola funcion con parametro (ataque, player, contrincante)
-
 function jugadorAtaca (player, ataque, contrincante) {
 
     let valorAtaque = 0
@@ -16,7 +14,6 @@ function jugadorAtaca (player, ataque, contrincante) {
     actualizarVista(valorAtaque, player, contrincante)
 
 }
-
 
 /*
 function comprobarGanador (player1, player2) {
@@ -35,15 +32,11 @@ function comprobarGanador (player1, player2) {
 }
 */
 
-
-
 botonAtaque1Player1.addEventListener("click", function(){jugadorAtaca(player1,1,player2)})
 botonAtaque2Player1.addEventListener("click", function(){jugadorAtaca(player1,2,player2)})
 botonAtaque1Player2.addEventListener("click", function(){jugadorAtaca(player2,1,player1)})
 botonAtaque2Player2.addEventListener("click", function(){jugadorAtaca(player2,2,player1)})
 
-// Desactiva Botones
-// BotonesPlayer1.forEach(function(element){element.classList.toggle("desactivado")})
 
 
 
