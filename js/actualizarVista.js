@@ -18,11 +18,19 @@ function desactivarBotones (atacante) {
 
 // Elige el elemento del DOM que representa al personaje atacado. 
 
-function determinarPersonajeAtacado (atacado) {
+function determinarDOMdePersonajeAtacado (atacado) {
     if (atacado === player2) {
         return document.querySelectorAll(`#player2 .personaje img`)[0]
     } else if (atacado === player1) {
         return document.querySelectorAll(`#player1 .personaje img`)[0]
+    }
+}
+
+function determinarDOMdeAtacante (atacante) {
+    if (atacante === player1) {
+        return document.querySelectorAll(`#player1 .personaje img`)[0]
+    } else if (atacante === player2) {
+        return document.querySelectorAll(`#player2 .personaje img`)[0]
     }
 }
 
@@ -31,7 +39,8 @@ function determinarPersonajeAtacado (atacado) {
 function actualizarVista (valorAtaque, atacante, atacado) {
 
     desactivarBotones(atacante)
-    personajeAtacado = determinarPersonajeAtacado(atacado)
+    personajeAtacadoDOM = determinarDOMdePersonajeAtacado(atacado)
+    personajeAtacanteDOM = determinarDOMdeAtacante(atacante)
     
     setTimeout(function(){
 
@@ -39,7 +48,7 @@ function actualizarVista (valorAtaque, atacante, atacado) {
             vidaPlayer2.innerText = player2.vida
 
             if (valorAtaque !== 0) {
-            personajeAtacado.classList.toggle("herido")
+            personajeAtacadoDOM.classList.toggle("herido")
             actualizarIndicador(`¡${atacado.nombre} perdió ${valorAtaque} de vida!`)
             } else {
             actualizarIndicador(`¡${atacante.nombre} falló! ${atacado.nombre} no recibió daño.`) 
@@ -47,7 +56,7 @@ function actualizarVista (valorAtaque, atacante, atacado) {
 
         }, 500)
 
-        if (atacado.vida > 0) { // El contrincante sigue con vida.
+        if (atacado.vida > 0 && atacante.vida > 0 ) { // Ambos siguen con vida.
        
             setTimeout(function(){
                 // Se activan botones.
@@ -57,9 +66,18 @@ function actualizarVista (valorAtaque, atacante, atacado) {
             }, 2000)
            
 
-        } else { // el contricante pierde.
+        } else { // Alguien pierde.
 
-            setTimeout(function(){mostrarGanador(atacante, personajeAtacado)}, 2000)
+            if (atacado.vida <=0) {
+                setTimeout(function(){mostrarGanador(atacante, personajeAtacadoDOM)}, 2000)
+            }
+
+            if (atacante.vida <=0) {
+                setTimeout(function(){mostrarGanador(atacado, personajeAtacanteDOM)}, 2000)
+            }
+
+            // Definir EMPATE
+            
            
         }
     
