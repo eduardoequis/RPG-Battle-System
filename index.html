@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div class="fondo">
+<div class="fondo ocultarFondo">
 
     <div id="indicadorMensajes">Acá van los turnos</div>
 
@@ -76,14 +76,32 @@
 
     <div id="ventanaFinal">
     <p>¿Volver a jugar?</p>
-    <a class="button is-normal is-success"> Reiniciar </a>
+    <a id="botonReiniciar" class="button is-normal is-success "> Reiniciar </a>
     </div>
 
 </div>
 
+    <div class="fondo ">
+    
+    <div id="indicadorMensajesMenu">JUGADOR 1: Elige un personaje.</div>
 
+    <div class="columns is-mobile is-centered">
+        <div class="column"> 
+            <img src="images/personajes/arquera_avatar.png">
+            <p class="titulo">Arquera</p>
+            <p class="subtitle is-6"> ❤ <span class="vidaPersonaje">120</span></p>
+            <h1 class="tituloAtaque">Ataque 1</h1>
+            <p class="describeAtaque">Descripción</p>
+            <h1 class="tituloAtaque">Ataque 2</h1>
+            <p class="describeAtaque">Descripción</p>
+        </div> 
+    </div>
 
-</div>
+    <div id="jugadores">
+        <span>_________</span> VS <span>_________</span>    
+       </div>
+
+    </div>
 
 
 eduardoequis / Sprites de SparklingLabs.com 
@@ -95,6 +113,7 @@ eduardoequis / Sprites de SparklingLabs.com
 <script src="js/actualizarVista.js"></script>
 <script src="js/cargarEntorno.js"></script>
 <script src="js/controladorBatalla.js"></script>
+<script src="js/elegirPersonajes.js"></script>
 
 
 

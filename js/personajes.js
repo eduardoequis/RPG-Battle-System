@@ -1,11 +1,12 @@
 
-function Personaje (nombre, vida, poder, ataque1, ataque2, imagen) {
+function Personaje (nombre, vida, poder, ataque1, ataque2, imagen, avatar) {
     this.nombre = nombre,
     this.vida = vida,
     this.poder = poder,
     this.ataque1 = ataque1,
     this.ataque2 = ataque2,
-    this.imagen = imagen
+    this.imagen = imagen,
+    this.avatar = avatar
 };
 
 let personajeArquera = new Personaje (
@@ -22,8 +23,11 @@ nombre: "Triple disparo",
 descripcion: "Resta 20, 40 o 60 de vida, o nada.",
 usar: function(valorPoder) { let valorMultiplicador =  Math.floor(Math.random() * (5 - 1)); let valorAtaque = valorPoder*valorMultiplicador; return valorAtaque}
 },
-"images/personajes/arquera.gif"
+"images/personajes/arquera.gif",
+"images/personajes/arquera_avatar.png"
 )
+
+
 
 let personajeGuerrero = new Personaje (
     "Guerrero", 
@@ -39,7 +43,8 @@ let personajeGuerrero = new Personaje (
     descripcion: "Puede restar 60 de vida o fallar",
     usar: function(valorPoder) { let valorSuerte = Math.random(); if (valorSuerte >= 0.5) {valorAtaque = valorPoder*2} else {valorAtaque = 0} ; return valorAtaque}
     },
-    "images/personajes/guerrero.gif"
+    "images/personajes/guerrero.gif",
+    "images/personajes/guerrero_avatar.png"
     )
 
 
@@ -48,8 +53,8 @@ let personajeReptiliano = new Personaje (
     150, 
     15, 
     {
-    nombre: "Lanzamiento de Hacha",
-    descripcion: "Resta 15 0 30 de vida",
+    nombre: "Lanza-Hacha",
+    descripcion: "Resta 15 0 30 de vida con su hacha",
     usar: function(valorPoder) { let valorSuerte = Math.random(); if (valorSuerte >= 0.5) {valorAtaque = valorPoder*2} else {valorAtaque = valorPoder} ; return valorAtaque}
     },
     {
@@ -57,7 +62,8 @@ let personajeReptiliano = new Personaje (
     descripcion: "El enemigo o tú pierde 45 de vida",
     usar: function(valorPoder) { let valorSuerte = Math.random(); if (valorSuerte >= 0.5) {valorAtaque = valorPoder*3; return valorAtaque } else { personajeReptiliano.vida -= valorPoder*3; return 0 }}
     },
-    "images/personajes/reptiliano.gif"
+    "images/personajes/reptiliano.gif",
+    "images/personajes/reptiliano_avatar.png"
     )
 
 let personajeHechicera = new Personaje (
@@ -66,7 +72,7 @@ let personajeHechicera = new Personaje (
         50, 
         {
         nombre: "Embrujo",
-        descripcion: "Resta 25 o 50 de vida",
+        descripcion: "Resta 25 o 50 de vida con magia",
         usar: function(valorPoder) { let valorSuerte = Math.random(); if (valorSuerte >= 0.5) {valorAtaque = valorPoder} else {valorAtaque = valorPoder/2} ; return valorAtaque}
         },
         {
@@ -74,8 +80,13 @@ let personajeHechicera = new Personaje (
         descripcion: "Resta 80 de vida, pierdes 20 de vida",
         usar: function(valorPoder) { personajeHechicera.vida -= 20; return 80}
         },
-        "images/personajes/hechicera.gif"
+        "images/personajes/hechicera.gif",
+        "images/personajes/hechicera_avatar.png"
         )
+
+let listadoPersonajes = []
+listadoPersonajes.push(personajeArquera, personajeGuerrero, personajeHechicera, personajeReptiliano)
+
 
 
 

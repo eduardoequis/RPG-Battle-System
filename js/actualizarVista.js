@@ -56,11 +56,14 @@ function actualizarVista (valorAtaque, atacante, atacado) {
 
         }, 500)
 
+
         if (atacado.vida > 0 && atacante.vida > 0 ) { // Ambos siguen con vida.
        
             setTimeout(function(){
                 // Se activan botones del otro jugador:
                 desactivarBotones(atacado)
+                // Se retira la clase "herido" del atacado. 
+                personajeAtacadoDOM.classList.toggle("herido")
                 actualizarIndicador(`¡Es el turno de ${atacado.nombre}!`)
                 turnos += 1
             }, 2000)
