@@ -43,7 +43,7 @@ cargarPersonajes()
 function asignarPersonaje (personajeElegido) {
     for (const personaje of listadoPersonajes) {
         if (personajeElegido === personaje.nombre) {
-            return personaje
+            return Object.create(personaje)
         }
      }
 }
